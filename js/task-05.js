@@ -5,7 +5,7 @@ const elems = {
 
 elems.inputElem.addEventListener("input", (event) => {
   elems.nameElem.textContent = event.currentTarget.value;
-  if (elems.nameElem.textContent === "") {
+  if (event.currentTarget.value === "") {
     elems.nameElem.textContent = "Anonymous";
   }
 });
