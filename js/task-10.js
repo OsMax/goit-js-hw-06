@@ -16,8 +16,6 @@ controls.btnCreate.addEventListener("click", createBoxes);
 
 function createBoxes() {
   destroyBoxes();
-  console.log(controls.number.min);
-  console.log(controls.number.max);
   if (checkNumber()) {
     for (let i = 0; i < Number(controls.number.value); i++) {
       let s = size + 10 * i * Number(controls.number.step) + "px";
