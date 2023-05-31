@@ -15,7 +15,7 @@ const controls = {
 controls.btnCreate.addEventListener("click", createBoxes);
 
 function createBoxes() {
-  destroyBoxes();
+  //destroyBoxes();
   if (checkNumber()) {
     for (let i = 0; i < Number(controls.number.value); i++) {
       let s = size + 10 * i * Number(controls.number.step) + "px";
