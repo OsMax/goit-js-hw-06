@@ -4,8 +4,8 @@ const elems = {
 };
 
 elems.inputElem.addEventListener("input", (event) => {
-  elems.nameElem.textContent = event.currentTarget.value;
-  if (event.currentTarget.value === "") {
+  elems.nameElem.textContent = event.currentTarget.value.trim();
+  if (event.currentTarget.value.trim() === "") {
     elems.nameElem.textContent = "Anonymous";
   }
 });

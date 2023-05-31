@@ -12,18 +12,38 @@ const controls = {
   box: document.querySelector("#boxes"),
 };
 
-controls.btnCreate.addEventListener("click", () => {
-  for (let i = 0; i < Number(controls.number.value); i++) {
-    let s = size + 10 * i + "px";
-    const tempElem = document.createElement("div");
-    tempElem.style.backgroundColor = getRandomHexColor();
-    tempElem.style.width = s;
-    tempElem.style.height = s;
-    controls.box.append(tempElem);
+controls.btnCreate.addEventListener("click", createBoxes);
+
+function createBoxes() {
+  destroyBoxes();
+  console.log(controls.number.min);
+  console.log(controls.number.max);
+  if (checkNumber()) {
+    for (let i = 0; i < Number(controls.number.value); i++) {
+      let s = size + 10 * i * Number(controls.number.step) + "px";
+      const tempElem = document.createElement("div");
+      tempElem.style.backgroundColor = getRandomHexColor();
+      tempElem.style.width = s;
+      tempElem.style.height = s;
+      controls.box.append(tempElem);
+    }
+  } else {
+    window.alert(
+      `Min number must be - ${controls.number.min}\nMax number - ${controls.number.max}`
+    );
   }
-});
+  controls.number.value = "";
+}
+
 function destroyBoxes() {
   controls.box.innerHTML = "";
 }
 
 controls.btnDestroy.addEventListener("click", destroyBoxes);
+
+function checkNumber() {
+  return (
+    controls.number.value >= Number(controls.number.min) &&
+    controls.number.value <= Number(controls.number.max)
+  );
+}

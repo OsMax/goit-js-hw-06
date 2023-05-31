@@ -1,10 +1,18 @@
 const elem = document.querySelector("#validation-input");
+
 elem.addEventListener("blur", () => {
-  if (elem.value.length == elem.dataset.length) {
-    elem.classList.add("valid");
-    elem.classList.remove("invalid");
+  if (elem.dataset.length) {
+    if (elem.value.length === Number.parseInt(elem.dataset.length)) {
+      check("valid", "invalid");
+    } else {
+      check("invalid", "valid");
+    }
   } else {
-    elem.classList.remove("valid");
-    elem.classList.add("invalid");
+    console.error("data-length not exist");
   }
 });
+
+function check(c1, c2) {
+  elem.classList.add(c1);
+  elem.classList.remove(c2);
+}
